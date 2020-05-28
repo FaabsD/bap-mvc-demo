@@ -1,0 +1,70 @@
+@import'vars';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
+body {
+    font-family: $Open-Sans;
+    margin: 0;
+
+}
+
+nav {
+    padding: 2px;
+    background-color: $head-color;
+
+    h1 {
+        text-align: center;
+        font-size: 28px;
+    }
+}
+
+header {
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    text-align: center;
+
+    .error {
+        text-decoration: underline;
+        font-size: 16px;
+        color: red;
+    }
+
+    h2 {
+        padding: 1em;
+        font-size: 25px;
+        color: $head-text-color;
+        margin: 0;
+    }
+}
+
+aside {
+    display: none;
+}
+
+main {
+    @import 'form-velden';
+}
+
+@media screen and (min-width: $desktop-width) {
+    body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    nav {
+        grid-column: 1/-1;
+    }
+
+    header {
+        width: 100%;
+        padding-bottom: 0;
+        grid-column: 2;
+
+        h2 {
+            font-size: 50px;
+        }
+    }
+
+    aside {
+        grid-column: 1;
+        display: unset;
+    }
+}

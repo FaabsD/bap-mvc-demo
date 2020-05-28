@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap");
+body {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+}
+
+nav {
+  padding: 2px;
+  background-color: #8CF68F;
+}
+nav h1 {
+  text-align: center;
+  font-size: 28px;
+}
+
+header {
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  text-align: center;
+}
+header .error {
+  text-decoration: underline;
+  font-size: 16px;
+  color: red;
+}
+header h2 {
+  padding: 1em;
+  font-size: 25px;
+  color: #1A8C17;
+  margin: 0;
+}
+
+aside {
+  display: none;
+}
+
+main {
+  /* Stijl voor het formulier */
+  /* Stijl voor het formulier in desktop weergave */
+}
+main form {
+  text-align: center;
+}
+main form input[type=email],
+main form input[type=text],
+main form input[type=password] {
+  margin-top: 19px;
+  margin-bottom: 19px;
+  height: 42px;
+  text-align: center;
+  width: 70vw;
+  border-radius: 25px;
+  border: none;
+  font-size: 20px;
+  -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+}
+main form input[type=submit] {
+  margin-top: 19px;
+  height: 42px;
+  width: 70vw;
+  border: none;
+  border-radius: 25px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1A8C17;
+  background-color: #8CF68F;
+}
+@media screen and (min-width: 1100px) {
+  main form input[type=email],
+main form input[type=text],
+main form input[type=password] {
+    width: 50%;
+  }
+  main form input[type=submit] {
+    width: 50%;
+    height: 71px;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  nav {
+    grid-column: 1/-1;
+  }
+
+  header {
+    width: 100%;
+    padding-bottom: 0;
+    grid-column: 2;
+  }
+  header h2 {
+    font-size: 50px;
+  }
+
+  aside {
+    grid-column: 1;
+    display: unset;
+  }
+}
+
+/*# sourceMappingURL=aanmelding.css.map */

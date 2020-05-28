@@ -1,0 +1,49 @@
+// Hier staat alle stijl voor het registratie formulier. ps. Is evt ook te gebruiken voor het inlog formuliers 
+@import 'vars';
+/* Stijl voor het formulier */
+form {
+    text-align: center;
+
+    input[type="email"],
+    input[type="text"],
+    input[type="password"] {
+        margin-top: 19px;
+        margin-bottom: 19px;
+        height: 42px;
+        text-align: center;
+        width: 70vw;
+        border-radius: 25px;
+        border: none;
+        font-size: 20px;
+        -webkit-box-shadow: 0px 3px 6px rgba($color: #000000, $alpha: 0.16);
+        box-shadow: 0px 3px 6px rgba($color: #000000, $alpha: 0.16);
+    }
+
+    input[type="submit"] {
+        margin-top: 19px;
+        height: 42px;
+        width: 70vw;
+        border: none;
+        border-radius: 25px;
+        font-size: 20px;
+        font-weight: 700;
+        color: $head-text-color;
+        background-color: $head-color;
+    }
+}
+/* Stijl voor het formulier in desktop weergave */
+@media screen and (min-width: $desktop-width) {
+    form {
+
+        input[type="email"],
+        input[type="text"],
+        input[type="password"] {
+            width: 50%;
+        }
+
+        input[type="submit"] {
+            width: 50%;
+            height: 71px;
+        }
+    }
+}

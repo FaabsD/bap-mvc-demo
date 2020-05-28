@@ -15,7 +15,7 @@ function dbConnect() {
 	$config = get_config('DB');
 
 	try {
-		$dsn = 'mysql:host=' . $config('HOSTNAME') . ';dbname=' . $config['DATABASE'] . ';charset=utf8';
+		$dsn = 'mysql:host=' . $config['HOSTNAME'] . ';dbname=' . $config['DATABASE'] . ';charset=utf8';
 
 		$connection = new PDO( $dsn, $config['USER'], $config['PASSWORD'] );
 
@@ -64,4 +64,61 @@ function get_template_engine() {
 
 	return new League\Plates\Engine( $templates_path );
 
+}
+
+
+function validateRegisterData($data){
+	$errors = [];
+        // check op echt e-mailadres
+        $email = filter_var($data['email'], FILTER_VALIDATE_EMAIL);
+        $password = trim($data['password']);
+        $fullname = $data['fullname'];
+        $username = $data['username'];
+
+        if ( $email === false ){
+            $errors['email'] = "Geen geldig e-mailadres ingevuld";
+        }
+        // check of wachtwoord minstens 6 tekens bevat
+        if ( strlen( $password ) < 6 ){
+            $errors['password'] = "Wachtwoord is te kort (moet minstens 6 tekens bevatten)";
+		}
+		//Result array
+		$data = [
+			'email'=>$data['email'],
+			'password'=>$password,
+			'fullname'=>$fullname,
+			'username'=>$username
+		];
+
+		return [
+			'data'=>$data,
+			'errors'=>$errors
+		];
+		
+}
+function userNotRegistered($email){
+	    //Check of het email al in gebruik is
+        $connection = dbConnect();
+        $sql = "SELECT * FROM users WHERE email = :email";
+        $statement = $connection->prepare( $sql );
+		$statement->execute( [ 'email' => $email ] );
+		
+		return ($statement->rowCount() === 0);
+}
+
+function createUser($email, $password, $fullname, $username){
+    $connection = dbConnect();
+	 //geen gebruiker gevonden? Verder met opslaan
+                $sql = "INSERT INTO users (email, full_name, user_name, password) 
+                VALUES (:email, :fullname, :username, :password)";
+                $statement = $connection->prepare( $sql );
+                $safe_password = password_hash( $password, PASSWORD_DEFAULT );
+                $params = [
+                    'email' => $email,
+                    'fullname' => $fullname,
+                    'username' => $username,
+                    'password' => $safe_password
+                ];
+                $statement->execute( $params );
+               
 }
