@@ -38,7 +38,7 @@ use function DI\create;
 
             } else{
                 //anders aangeven dat het e-mail al wordt gebruikt
-                $errors['email'] = "Dit e-mailadres is al in gebruik";
+                $result['errors']['email'] = "Dit e-mailadres is al in gebruik";
             }
         }
         $template_engine = get_template_engine();
